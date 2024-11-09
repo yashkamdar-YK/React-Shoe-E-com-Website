@@ -153,7 +153,6 @@ function Navbar() {
           </div>
           <div className="flex justify-center items-center">
             <UserProfile/>
-            <i className="fa-regular fa-heart w-11 h-12 flex justify-center items-center text-lg font-semibold"></i>
             <NavLink to="/cart">
             <i className="fa-regular fa-bag-shopping w-11 h-12 flex justify-center items-center text-lg font-semibold"></i>
             </NavLink>

@@ -109,8 +109,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { User } from "lucide-react";
 import { useFirebaseContext } from "../Context/Firebase";
 import UserProfileCard from "./UserProfileCard";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
+
+  const navigate = useNavigate()
+
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const { isLoggedIn } = useFirebaseContext();
@@ -126,8 +130,19 @@ const UserProfile = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  if (!isLoggedIn) return null;
-
+  
+    if (!isLoggedIn) {
+      return (
+        <button
+          onClick={()=>navigate('/login')}
+          className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
+          aria-label="Login"
+        >
+          <i className="fa-regular fa-user text-lg" />
+          <span className="text-sm font-medium">Login</span>
+        </button>
+      );
+    }
   return (
     <div className="relative" ref={dropdownRef}>
       <button
